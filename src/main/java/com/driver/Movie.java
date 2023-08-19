@@ -3,7 +3,7 @@ package com.driver;
 import java.util.ArrayList;
 
 public class Movie {
-    private String moviename;
+    private String name;
     private int durationInMinutes;
     private double imdbRating;
 
@@ -11,18 +11,18 @@ public class Movie {
 
     }
 
-    public Movie(String moviename, int durationInMinutes, double imdbRating) {
-        this.moviename = moviename;
+    public Movie(String name, int durationInMinutes, double imdbRating) {
+        this.name = name;
         this.durationInMinutes = durationInMinutes;
         this.imdbRating = imdbRating;
     }
 
-    public String getMoviename() {
-        return this.moviename;
+    public String getName() {
+        return name;
     }
 
-    public void setMoviename(String moviename) {
-        this.moviename = moviename;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getDurationInMinutes() {

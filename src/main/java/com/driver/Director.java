@@ -1,26 +1,26 @@
 package com.driver;
 
 public class Director {
-    private String directorname;
+    private String name;
     private int numberOfMovies;
     private double imdbRating;
 
     public Director() {
     }
 
-    public Director(String directorname, int numberOfMovies, double imdbRating) {
-        this.directorname = directorname;
+    public Director(String name, int numberOfMovies, double imdbRating) {
+        this.name = name;
         this.numberOfMovies = numberOfMovies;
         this.imdbRating = imdbRating;
     }
 
-    public String getDirectorname()
+    public String getName()
     {
-        return this.directorname;
+        return name;
     }
 
-    public void setDirectorname(String directorname) {
-        this.directorname = directorname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getNumberOfMovies() {
