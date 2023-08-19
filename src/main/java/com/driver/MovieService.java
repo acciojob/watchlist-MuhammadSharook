@@ -1,6 +1,8 @@
 package com.driver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,17 +13,17 @@ public class MovieService {
     @Autowired
     MovieRepository movieRepository;
     HashMap<String,ArrayList<String>> w = new HashMap<>();
-    public String addMovie(Movie movie) {
+    public ResponseEntity<String> addMovie(Movie movie) {
         movieRepository.addMovie(movie);
-        return "Movie added successfully. ";
+        return ResponseEntity.ok("Movie added successfully! " + movie.getMoviename());
     }
 
-    public String addDirector(Director director) {
+    public ResponseEntity<String> addDirector(Director director) {
         movieRepository.addDirector(director);
-        return "Director added successfully. ";
+        return ResponseEntity.ok("Director added successfully! " + director.getDirectorname());
     }
 
-    public String addMovieDirectorPair(String moviename, String directorname) {
+    public ResponseEntity<String> addMovieDirectorPair(String moviename, String directorname) {
 //        movieRepository.addMovieDirectorPair(moviename,directorname);
         if(w.containsKey(directorname))
         {
@@ -34,14 +36,14 @@ public class MovieService {
             t.add(moviename);
             w.put(directorname,t);
         }
-        return "Both paired successfully. ";
+        return ResponseEntity.ok("Successfully paired movie " + moviename + " with director " + directorname);
     }
 
-    public Movie getMovieByName(String moviename) {
-        return movieRepository.getMovieByName(moviename);
+    public ResponseEntity<Movie> getMovieByName(String name) {
+        return movieRepository.getMovieByName(name);
     }
 
-    public Director getDirectorByName(String directorname) {
+    public ResponseEntity<Director> getDirectorByName(String directorname) {
         return movieRepository.getDirectorByName(directorname);
     }
 
@@ -49,19 +51,19 @@ public class MovieService {
         return w.get(directorname);
     }
 
-    public ArrayList<String> findAllMovies() {
+    public ResponseEntity<ArrayList<String>> findAllMovies() {
         return movieRepository.findAllMovies();
 
     }
 
-    public String deleteDirectorByName(String directorname) {
+    public ResponseEntity<String> deleteDirectorByName(String directorname) {
         w.remove(directorname);
-        return "Director and their movies deleted successfully.";
+        return ResponseEntity.ok("Successfully deleted director " + directorname + " and related movies.");
     }
 
-    public String deleteAllDirectors() {
+    public ResponseEntity<String> deleteAllDirectors() {
 //        movieRepository.deleteAllDirectors();
         w.clear();
-        return "All directors and their movies deleted successfully.";
+        return ResponseEntity.ok("Successfully deleted all directors and their movies.");
     }
 }

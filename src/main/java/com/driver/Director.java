@@ -14,8 +14,9 @@ public class Director {
         this.imdbRating = imdbRating;
     }
 
-    public String getDirectorname() {
-        return directorname;
+    public String getDirectorname()
+    {
+        return this.directorname;
     }
 
     public void setDirectorname(String directorname) {
